@@ -17,7 +17,7 @@ Example:
 
 Routes:
 
-- `GET: /org` - No Args necessary.
+- `GET: /org` - No Args necessary, returns `Map`
 - `GET: /user` - Accepts query string, returns `Map`.
 - `GET: /label` - Accepts label id parameter, returns `Map`.
 - `GET: /labels` - Accepts query string, returns `Array`.
