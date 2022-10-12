@@ -26,6 +26,9 @@ Routes:
 
 <br>
 
+- ! Error
+  - Errors are handled with a status 500 code and a `msg` property with error details attached.
+
 ## `GET: /org`
 
 Gets org info including member and admin ids for further querying.
@@ -46,7 +49,7 @@ Example:
 
 <br>
 
-## `GET: /label/{label id}`
+## `GET: /label/{labelID}`
 
 Get a single label using a label id after `/label/`
 
@@ -96,7 +99,7 @@ Example end points:
 
 <br>
 
-## `GET: /project/{project id}`
+## `GET: /project/{projectID}`
 
 Get a single project using a project id after `/project/`
 
