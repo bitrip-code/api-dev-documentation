@@ -113,19 +113,19 @@ fetch("https://api.bitrip.com/label", {
   },
   body: JSON.stringify({
     uid: "user id",
-    title: "new label"
+    title: "new label",
     pid: "project id",
     tags: ["urgent", "review"],
   }),
 })
   .then((res) => res.json())
   .then((labelData) => console.log(labelData))
-  .catch(err => {
-      // will display err status code
-      console.log(err)
-      // will provide further information
-      console.log(err.response.data.msg)
-  })
+  .catch((err) => {
+    // will display err status code
+    console.log(err);
+    // will provide further information
+    console.log(err.response.data.msg);
+  });
 ```
 
 <br>
