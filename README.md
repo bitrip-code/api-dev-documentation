@@ -34,9 +34,31 @@ Routes:
 
 Gets org info including member and admin ids for further querying.
 
-Example:
+Example request:
 
 `https://api.bitrip.com/org`
+
+Example Response:
+
+```json
+{
+  "admins": [
+    "KFzra4FuAjbQCMawNQ0AlJoGmqv1", //user IDS
+    "dn82sDBSlbNj4hY9Hx0m490hIEl2"
+  ],
+  "subscribers": [],
+  "members": [],
+  "invitedAdmins": [],
+  "created": {
+    "_seconds": 1664645679,
+    "_nanoseconds": 486000000
+  },
+  "name": "Oakland",
+  "id": "f11b4f25-4dbe-44a8-a723-bc612eeda4b9",
+  "creatorId": "KFzra4FuAjbQCMawNQ0AlJoGmqv1",
+  "invitedMembers": []
+}
+```
 
 <br>
 
@@ -44,9 +66,26 @@ Example:
 
 Gets a user by their ID.
 
-Example:
+Example Request:
 
 `https://api.bitrip.com/user?uid=dn82sDBSlbNj4hY9Hx0m490hIEl2`
+
+Example Response:
+
+```json
+{
+  "displayName": "Thomas - test",
+  "email": "thomas.smith.br.testing@gmail.com",
+  "uid": "dn82sDBSlbNj4hY9Hx0m490hIEl2",
+  "organisationId": "f11b4f25-4dbe-44a8-a723-bc612eeda4b9",
+  "projects": [
+    "b549ad06-eb5a-4fa6-88dc-4d80bbc2beae", //Project IDS
+    "480aea87-df2e-489d-9829-4daa35a13c02",
+    "aae48908-34fc-4d7b-80aa-8d7e4864325a",
+    "418b2ae1-a237-46f3-a6ac-4145e7f74aee"
+  ]
+}
+```
 
 <br>
 
@@ -54,9 +93,29 @@ Example:
 
 Get a single label using a label id after `/label/`
 
-Example:
+Example Request:
 
 `https://api.bitrip.com/label/7901dd0d-9a0a-4712-81de-169d572f1491`
+
+Example Response:
+
+```json
+{
+  "tags": ["done", "urgent"],
+  "creator_ref": "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+  "projectID": "aae48908-34fc-4d7b-80aa-8d7e4864325a",
+  "id": "7901dd0d-9a0a-4712-81de-169d572f1491",
+  "modified": {
+    "_seconds": 1665084165,
+    "_nanoseconds": 107000000
+  },
+  "created": {
+    "_seconds": 1665084149,
+    "_nanoseconds": 719000000
+  },
+  "name": "A label for tags"
+}
+```
 
 ## `GET: /labels`
 
@@ -98,17 +157,77 @@ Example end points:
 
 `https://api.bitrip.com/labels?uid=dn82sDBSlbNj4hY9Hx0m490hIEl2&pid=aae48908-34fc-4d7b-80aa-8d7e4864325a&type=viewed&from=1664992857`
 
+Example response:
+
+```json
+[
+    {
+        "tags": [
+            "done",
+            "urgent"
+        ],
+        "creator_ref": "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+        "projectID": "aae48908-34fc-4d7b-80aa-8d7e4864325a",
+        "id": "7901dd0d-9a0a-4712-81de-169d572f1491",
+        "modified": {
+            "_seconds": 1665084165,
+            "_nanoseconds": 107000000
+        },
+        "created": {
+            "_seconds": 1665084149,
+            "_nanoseconds": 719000000
+        },
+        "name": "A label for tags"
+    },
+    ...
+]
+```
+
 <br>
 
 ## `GET: /project/{projectID}`
 
 Get a single project using a project id after `/project/`
 
-Example:
+Example Request:
 
 `https://api.bitrip.com/project/b549ad06-eb5a-4fa6-88dc-4d80bbc2beae`
 
-## `GET: /project`
+Example Response:
+
+```json
+{
+  "members": [
+    "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+    "/users/KFzra4FuAjbQCMawNQ0AlJoGmqv1"
+  ],
+  "membersCanInvite": false,
+  "creator_ref": "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+  "title": "Project from test account",
+  "privateLabels": true,
+  "admins": [
+    "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+    "/users/KFzra4FuAjbQCMawNQ0AlJoGmqv1"
+  ],
+  "id": "b549ad06-eb5a-4fa6-88dc-4d80bbc2beae",
+  "modified": {
+    "_seconds": 1664645810,
+    "_nanoseconds": 177000000
+  },
+  "contentItems": [],
+  "labels": [
+    "a5c63c6e-e9f7-492b-893e-e3040e3c15c7",
+    "57f1896e-e0f0-458a-bbc2-218d7a557393",
+    "a8383f0f-4d74-4a84-b628-eb94432d704f"
+  ],
+  "created": {
+    "_seconds": 1664645810,
+    "_nanoseconds": 177000000
+  }
+}
+```
+
+## `GET: /projects`
 
 Optional query parameters:
 
@@ -154,6 +273,39 @@ Example requests:
 
 `https://api.bitrip.com/project?from=1664929172&type=scanned&has_o=urgent,done`
 
+Example Response:
+
+```json
+[
+    {
+        "labels": [
+            "b6fcf49e-ba36-4a49-bece-37fb527deed7"
+        ],
+        "membersCanInvite": false,
+        "contentItems": [],
+        "modified": {
+            "_seconds": 1664892640,
+            "_nanoseconds": 756000000
+        },
+        "title": "done",
+        "admins": [
+            "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2"
+        ],
+        "privateLabels": false,
+        "members": [
+            "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2"
+        ],
+        "created": {
+            "_seconds": 1664892640,
+            "_nanoseconds": 756000000
+        },
+        "id": "418b2ae1-a237-46f3-a6ac-4145e7f74aee",
+        "creator_ref": "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2"
+    },
+    ...
+]
+```
+
 <br>
 
 ## `GET: /logs`
@@ -187,3 +339,23 @@ Get viewer logs from user since Sat Oct 01 2022
 Get view logs from Sat Oct 01 2022 to Thursday, October 6, 2022
 
 `https://api.bitrip.com/logs?from=1664665190&to=1665084152&type=viewed`
+
+Example response:
+
+```json
+[
+    {
+        "loggerName": "Thomas - test",
+        "loggedAt": {
+            "_seconds": 1664645821,
+            "_nanoseconds": 445000000
+        },
+        "editType": "Assigned \"Project from test account\"",
+        "type": "edited",
+        "labelId": "a5c63c6e-e9f7-492b-893e-e3040e3c15c7",
+        "loggerId": "dn82sDBSlbNj4hY9Hx0m490hIEl2",
+        "projectId": "b549ad06-eb5a-4fa6-88dc-4d80bbc2beae"
+    },
+    ...
+]
+```
