@@ -285,8 +285,6 @@ Optional query parameters:
 - `type` (optional) scan type (edited, viewed, scanned)
   - Narrows search to type of interaction with the labels inside of the
     project.
-- `lid` (optional) label ID
-  - Gets label by its ID
 - `when` (optional) EPOCH timestamp.
   - Time stamp to limit search time
 - `to` (must be used with when) EPOCH timestamp
