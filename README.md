@@ -18,12 +18,12 @@ Example:
 Routes:
 
 - `GET: /org` - No Args necessary, returns `Map`
-- `GET: /user` - Accepts query string, returns `Map`.
-- `GET: /label` - Accepts label id parameter, returns `Map`.
-- `GET: /labels` - Accepts query string, returns `Array`.
-- `GET: /project` - Accepts project id parameter, returns `Map`.
-- `GET: /projects` - Accepts query string, returns `Array`.
-- `GET: /logs` - Accepts query string, returns `Array`.
+- `GET: /user` - Accepts query string, returns `Map`
+- `GET: /label` - Accepts label id parameter, returns `Map`
+- `GET: /labels` - Accepts query string, returns `Array`
+- `GET: /project` - Accepts project id parameter, returns `Map`
+- `GET: /projects` - Accepts query string, returns `Array`
+- `GET: /logs` - Accepts query string, returns `Array`
 
 <br>
 
