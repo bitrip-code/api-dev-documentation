@@ -20,6 +20,7 @@ Routes:
 - `GET: /org` - No Args necessary, returns `Map`
 - `GET: /user` - Accepts query string, returns `Map`
 - `GET: /label` - Accepts label id parameter, returns `Map`
+- `POST: /label` - Accepts JSON uid, tags, and pid body data, returns `Map`
 - `GET: /labels` - Accepts query string, returns `Array`
 - `GET: /project` - Accepts project id parameter, returns `Map`
 - `GET: /projects` - Accepts query string, returns `Array`
@@ -85,6 +86,46 @@ Example Response:
     "418b2ae1-a237-46f3-a6ac-4145e7f74aee"
   ]
 }
+```
+
+<br>
+
+## `POST /label`
+
+Data must be sent as JSON body information.
+
+- uid (required) User ID
+  - this will set the creator_ref for the label
+- title (required)
+  - sets title for label
+- pid (optional)
+  - creates label inside of project
+- tags (optional)
+  - adds searchable keywords to label
+
+Example Request:
+
+```js
+fetch("https://api.bitrip.com/label", {
+  headers: {
+    "x-api-key": "your api key here",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    uid: "user id",
+    title: "new label"
+    pid: "project id",
+    tags: ["urgent", "review"],
+  }),
+})
+  .then((res) => res.json())
+  .then((labelData) => console.log(labelData))
+  .catch(err => {
+      // will display err status code
+      console.log(err)
+      // will provide further information
+      console.log(err.response.data.msg)
+  })
 ```
 
 <br>
