@@ -10,19 +10,20 @@ Example:
 
 ```js
 {
-  "x-api-key": "your-api-key-goes-here"
+  "x-api-key": "your-api-key-goes-here",
+  "Content-Type": "application/json"
 }
 ```
 
 Routes:
 
-- `/org` - No Args necessary.
-- `/user` - Accepts query string, returns `Map`.
-- `/label` - Accepts label id parameter, returns `Map`.
-- `/labels` - Accepts query string, returns `Array`.
-- `/project` - Accepts project id parameter, returns `Map`.
-- `/projects` - Accepts query string, returns `Array`.
-- `/logs` - Accepts query string, returns `Array`.
+- `GET: /org` - No Args necessary.
+- `GET: /user` - Accepts query string, returns `Map`.
+- `GET: /label` - Accepts label id parameter, returns `Map`.
+- `GET: /labels` - Accepts query string, returns `Array`.
+- `GET: /project` - Accepts project id parameter, returns `Map`.
+- `GET: /projects` - Accepts query string, returns `Array`.
+- `GET: /logs` - Accepts query string, returns `Array`.
 
 <br>
 
