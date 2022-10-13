@@ -19,6 +19,7 @@ Routes:
 
 - `GET: /org` - No Args necessary, returns `Map`
 - `GET: /user` - Accepts query string, returns `Map`
+- `DELETE: /label` - Accepts label id parameter, returns `Map`
 - `GET: /label` - Accepts label id parameter, returns `Map`
 - `POST: /label` - Accepts JSON uid, tags, and pid body data, returns `Map`
 - `GET: /labels` - Accepts query string, returns `Array`
@@ -27,6 +28,10 @@ Routes:
 - `GET: /logs` - Accepts query string, returns `Array`
 
 <br>
+
+- Success
+
+  - Successful requests will receive a status code 200 and JSON payload.
 
 - ! Error
   - Errors are handled with a status 500 code and a `msg` property with error details attached.
