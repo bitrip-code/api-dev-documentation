@@ -130,6 +130,24 @@ fetch("https://api.bitrip.com/label", {
 
 <br>
 
+## `DELETE: /label/{labelID}`
+
+Delete a single label using a label id after `/label/`.
+
+Example Request:
+
+`http://localhost:5000/label/946b825f-af94-49c1-8c33-409ef44c758b`
+
+Example Response:
+
+```json
+{
+  "msg": "Label deleted successfully."
+}
+```
+
+<br>
+
 ## `GET: /label/{labelID}`
 
 Get a single label using a label id after `/label/`
