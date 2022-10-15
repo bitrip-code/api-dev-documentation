@@ -20,6 +20,7 @@ Routes:
 - `GET: /org` - No Args necessary, returns `Map`
 - `GET: /user` - Accepts query string, returns `Map`
 - `DELETE: /label` - Accepts label id parameter, returns `Map`
+- `DELETE: /label/from_project` - Accepts label id parameter, returns `Map`
 - `GET: /label` - Accepts label id parameter, returns `Map`
 - `POST: /label` - Accepts JSON uid, tags, and pid body data, returns `Map`
 - `GET: /labels` - Accepts query string, returns `Array`
@@ -141,7 +142,7 @@ Delete a single label using a label id after `/label/`.
 
 Example Request:
 
-`http://localhost:5000/label/946b825f-af94-49c1-8c33-409ef44c758b`
+`https://api.bitrip.com/label/946b825f-af94-49c1-8c33-409ef44c758b`
 
 Example Response:
 
