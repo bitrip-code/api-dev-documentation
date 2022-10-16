@@ -25,7 +25,7 @@ Routes:
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#get_labels">`GET: /labels`</a> - Accepts query string, returns `Array`
-- <a href="get_project_by_id">`GET: /project/{projectId}`</a> - Accepts project id parameter, returns `Map`
+- <a href="#get_project_by_id">`GET: /project/{projectId}`</a> - Accepts project id parameter, returns `Map`
 - <a href="#get_projects">`GET: /projects` </a> - Accepts query string, returns `Array`
 - <a href="#get_logs">`GET: /logs`</a> - Accepts query string, returns `Array`
 
