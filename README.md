@@ -17,9 +17,9 @@ Example:
 
 Routes:
 
-- <a href="#get_org">`GET: /org`</a> - No Args necessary, returns `Map`
+- <a href="#get_org">`GET: /org`</a> - returns `Map`
 - <a href="#get_user">`GET: /user`</a> - Accepts query string, returns `Map`
-- <a href="#get_label_by_id">`GET: /label{labelId}`</a> - Accepts label id parameter, returns `Map`
+- <a href="#get_label_by_id">`GET: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#post_label">`POST: /label`</a> - Accepts JSON uid, tags, name, and pid body data, returns `Map`
 - <a href="#put_label">`PUT: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
