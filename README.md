@@ -229,17 +229,17 @@ fetch("https://api.bitrip.com/label", {
 
 Accepts:
 
-- type (required)
+- `type` (required)
 
   - options: TEXT
   - `String`
 
-- title (required)
+- `title` (required)
 
   - title for attachment
   - `String`
 
-- text (required)
+- `text` (required)
 
   - body text for text attachment
   - `String`
@@ -290,9 +290,15 @@ Edit labels by sending the updated value.
 
 Update label parameters by sending
 
-- tags - `Array`
-- name - `String`
-- pid - `String`
+- `tags`
+  - Pass items you want tags array to be set to.
+  - `Array`
+- `name`
+  - Pass the name you want the label to be updated to.
+  - `String`
+- `pid`
+  - Pass the project ID you want the label to be set or changed to.
+  - `String`
 
 Example request:
 
@@ -385,11 +391,9 @@ Example Response:
 
 <div id="delete_label_project">
 
-## `DELETE: /label/{labelID}`
+## `DELETE: /label/from_project/{labelID}`
 
-Removes label from project using a label id after `/label/`.
-
-Delete a single label using a label id after `/label/`.
+Removes label from project.
 
 Example Request:
 
@@ -543,12 +547,10 @@ Optional query parameters:
 - `from` (optional) EPOCH timestamp
   - Defaults to all but can be used with type to narrow search to all
     things after the epoch time stamp.
+- `to` (must be used with when) EPOCH timestamp
 - `type` (optional) scan type (edited, viewed, scanned)
   - Narrows search to type of interaction with the labels inside of the
     project.
-- `when` (optional) EPOCH timestamp.
-  - Time stamp to limit search time
-- `to` (must be used with when) EPOCH timestamp
 
 If there is no query params sent it will return all the projects in the
 organization.
