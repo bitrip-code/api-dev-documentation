@@ -17,16 +17,17 @@ Example:
 
 Routes:
 
-- `GET: /org` - No Args necessary, returns `Map`
-- `GET: /user` - Accepts query string, returns `Map`
-- `DELETE: /label` - Accepts label id parameter, returns `Map`
-- `DELETE: /label/from_project` - Accepts label id parameter, returns `Map`
-- `GET: /label` - Accepts label id parameter, returns `Map`
-- `POST: /label` - Accepts JSON uid, tags, and pid body data, returns `Map`
-- `GET: /labels` - Accepts query string, returns `Array`
-- `GET: /project` - Accepts project id parameter, returns `Map`
-- `GET: /projects` - Accepts query string, returns `Array`
-- `GET: /logs` - Accepts query string, returns `Array`
+- <a href="#get_org">`GET: /org`</a> - No Args necessary, returns `Map`
+- <a href="#get_user">`GET: /user`</a> - Accepts query string, returns `Map`
+- <a href="#get_label_by_id">`GET: /label{labelId}`</a> - Accepts label id parameter, returns `Map`
+- <a href="#post_label">`POST: /label`</a> - Accepts JSON uid, tags, name, and pid body data, returns `Map`
+- <a href="#put_label">`PUT: /label/{labelId}`</a> - Accepts JSON uid, tags, and pid body data, returns `Map`
+- <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
+- <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a> - Accepts label id parameter, returns `Map`
+- <a href="#get_labels">`GET: /labels`</a> - Accepts query string, returns `Array`
+- <a href="get_project_by_id">`GET: /project/{projectId}`</a> - Accepts project id parameter, returns `Map`
+- <a href="#get_projects">`GET: /projects` </a> - Accepts query string, returns `Array`
+- <a href="#get_logs">`GET: /logs`</a> - Accepts query string, returns `Array`
 
 <br>
 
@@ -36,6 +37,8 @@ Routes:
 
 - ! Error
   - Errors are handled with a status 500 code and a `msg` property with error details attached.
+
+<div id="get_org">
 
 ## `GET: /org`
 
@@ -67,7 +70,11 @@ Example Response:
 }
 ```
 
+</div>
+
 <br>
+
+<div id="get_user">
 
 ## `GET: /user`
 
@@ -94,65 +101,11 @@ Example Response:
 }
 ```
 
-<br>
-
-## `POST /label`
-
-Data must be sent as JSON body information.
-
-- uid (required) User ID
-  - this will set the creator_ref for the label
-- title (required)
-  - sets title for label
-- pid (optional)
-  - creates label inside of project
-- tags (optional)
-  - adds searchable keywords to label
-
-Example Request:
-
-```js
-fetch("https://api.bitrip.com/label", {
-  headers: {
-    "x-api-key": "your api key here",
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    uid: "user id",
-    title: "new label",
-    pid: "project id",
-    tags: ["urgent", "review"],
-  }),
-})
-  .then((res) => res.json())
-  .then((labelData) => console.log(labelData))
-  .catch((err) => {
-    // will display err status code
-    console.log(err);
-    // will provide further information
-    console.log(err.response.data.msg);
-  });
-```
+</div>
 
 <br>
 
-## `DELETE: /label/{labelID}`
-
-Delete a single label using a label id after `/label/`.
-
-Example Request:
-
-`https://api.bitrip.com/label/946b825f-af94-49c1-8c33-409ef44c758b`
-
-Example Response:
-
-```json
-{
-  "msg": "Label deleted successfully."
-}
-```
-
-<br>
+<div id="get_label_by_id">
 
 ## `GET: /label/{labelID}`
 
@@ -181,6 +134,178 @@ Example Response:
   "name": "A label for tags"
 }
 ```
+
+</div>
+
+<div id="post_label">
+
+## `POST /label`
+
+Data must be sent as JSON body information.
+
+- uid (required) User ID
+  - this will set the creator_ref for the label
+- title (required)
+  - sets title for label
+- pid (optional)
+  - creates label inside of project
+- tags (optional)
+  - adds searchable keywords to label
+
+Example Request:
+
+```js
+fetch("https://api.bitrip.com/label", {
+  method: "POST",
+  headers: {
+    "x-api-key": "your api key here",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    uid: "user id",
+    name: "new label",
+    pid: "new project id",
+    tags: ["urgent", "review"],
+  }),
+})
+  .then((res) => res.json())
+  .then((labelData) => console.log(labelData))
+  .catch((err) => {
+    console.log(err);
+    console.log(err.response.data.msg);
+  });
+```
+
+</div>
+
+<br>
+
+<div id="put_label">
+
+## `PUT: /label/{labelID}`
+
+Edit labels by sending the updated value.
+
+Update label parameters by sending
+
+- tags - `Array`
+- name - `String`
+- pid - `String`
+
+Example request:
+
+- updates label name, tags
+
+```js
+fetch("https://api.bitrip.com/label", {
+  method: "PUT",
+  headers: {
+    "x-api-key": "your api key here",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: "new label title",
+    tags: ["done"],
+  }),
+})
+  .then((res) => res.json())
+  .then((labelData) => console.log(labelData))
+  .catch((err) => {
+    console.log(err);
+    console.log(err.response.data.msg);
+  });
+```
+
+- updates label project
+
+```js
+fetch("https://api.bitrip.com/label/41e92e47-133d-4b6a-89d7-a38404ec6024", {
+  method: "PUT",
+  headers: {
+    "x-api-key": "your api key here",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    pid: "new project id",
+  }),
+})
+  .then((res) => res.json())
+  .then((labelData) => console.log(labelData))
+  .catch((err) => {
+    console.log(err);
+    console.log(err.response.data.msg);
+  });
+```
+
+Example response:
+
+```json
+{
+  "tags": ["done"],
+  "creator_ref": "/users/dn82sDBSlbNj4hY9Hx0m490hIEl2",
+  "id": "41e92e47-133d-4b6a-89d7-a38404ec6024",
+  "modified": {
+    "_seconds": 1665693479,
+    "_nanoseconds": 976000000
+  },
+  "created": {
+    "_seconds": 1665692096,
+    "_nanoseconds": 189000000
+  },
+  "name": "new label title"
+}
+```
+
+</div>
+
+<br>
+
+<div id="delete_label">
+
+## `DELETE: /label/{labelID}`
+
+Delete a single label using a label id after `/label/`.
+
+Example Request:
+
+`https://api.bitrip.com/label/946b825f-af94-49c1-8c33-409ef44c758b`
+
+Example Response:
+
+```json
+{
+  "msg": "Label deleted successfully."
+}
+```
+
+</div>
+<br>
+
+<div id="delete_label_project">
+
+## `DELETE: /label/{labelID}`
+
+Removes label from project using a label id after `/label/`.
+
+Delete a single label using a label id after `/label/`.
+
+Example Request:
+
+`https://api.bitrip.com/label/from_project/946b825f-af94-49c1-8c33-409ef44c758b`
+
+Example Response:
+
+```json
+{
+  "msg": "Label removed from project successfully."
+}
+```
+
+</div>
+
+<br>
+
+<div id="get_labels">
 
 ## `GET: /labels`
 
@@ -248,7 +373,11 @@ Example response:
 ]
 ```
 
+</div>
+
 <br>
+
+<div id="get_project_by_id">
 
 ## `GET: /project/{projectID}`
 
@@ -291,6 +420,12 @@ Example Response:
   }
 }
 ```
+
+</div>
+
+<br>
+
+<div id="get_projects">
 
 ## `GET: /projects`
 
@@ -369,7 +504,11 @@ Example Response:
 ]
 ```
 
+</div>
+
 <br>
+
+<div id="get_logs">
 
 ## `GET: /logs`
 
@@ -422,3 +561,5 @@ Example response:
     ...
 ]
 ```
+
+</div>
