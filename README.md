@@ -21,7 +21,7 @@ Routes:
 - <a href="#get_user">`GET: /user`</a> - Accepts query string, returns `Map`
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#post_label">`POST: /label`</a> - Accepts JSON uid, tags, name, and pid body data, returns `Map`
-- <a href="#put_label">`PUT: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
+- <a href="#put_label}">`PUT: /label/{labelId}`</a> - Accepts label id parameter and JSON tags, name, pid body data, returns `Map`
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#get_labels">`GET: /labels`</a> - Accepts query string, returns `Array`
