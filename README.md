@@ -18,9 +18,10 @@ Example:
 Routes:
 
 - <a href="#get_org">`GET: /org`</a> - returns `Map`
-- <a href="#get_user">`GET: /user`</a> - Accepts query string, returns `Map`
+- <a href="#get_user">`GET: /user/{userId}`</a> - Accepts user id param, returns `Map`
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#post_label">`POST: /label`</a> - Accepts JSON uid, tags, name, and pid body data, returns `Map`
+- <a href="#post_label_attachment">`POST: /label/attachment/{labelId}`</a> - Accepts label id parameter and JSON title, text, type body data, returns `Map`
 - <a href="#put_label}">`PUT: /label/{labelId}`</a> - Accepts label id parameter and JSON tags, name, pid body data, returns `Map`
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a> - Accepts label id parameter, returns `Map`
@@ -46,7 +47,21 @@ Gets org info including member and admin ids for further querying.
 
 Example request:
 
-`https://api.bitrip.com/org`
+```js
+const url = "https://api.bitrip.com/org";
+
+const options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key goes here",
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
 
 Example Response:
 
@@ -82,7 +97,21 @@ Gets a user by their ID.
 
 Example Request:
 
-`https://api.bitrip.com/user?uid=dn82sDBSlbNj4hY9Hx0m490hIEl2`
+```js
+const url = "https://api.bitrip.com/user?uid=dn82sDBSlbNj4hY9Hx0m490hIEl2";
+
+const options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
 
 Example Response:
 
@@ -113,7 +142,21 @@ Get a single label using a label id after `/label/`
 
 Example Request:
 
-`https://api.bitrip.com/label/7901dd0d-9a0a-4712-81de-169d572f1491`
+```js
+const url = "https://api.bitrip.com/label/57f1896e-e0f0-458a-bbc2-218d7a557393";
+
+const options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
 
 Example Response:
 
@@ -174,6 +217,65 @@ fetch("https://api.bitrip.com/label", {
     console.log(err);
     console.log(err.response.data.msg);
   });
+```
+
+</div>
+
+<br>
+
+<div id="post_label_attachment">
+
+## `POST: /label/attachment/{labelID}`
+
+Accepts:
+
+- type (required)
+
+  - options: TEXT
+  - `String`
+
+- title (required)
+
+  - title for attachment
+  - `String`
+
+- text (required)
+
+  - body text for text attachment
+  - `String`
+
+Example request:
+
+```js
+fetch(
+  "https://api.bitrip.com/label/attachment/41e92e47-133d-4b6a-89d7-a38404ec6024",
+  {
+    method: "POST",
+    headers: {
+      "x-api-key": "your api key here",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      type: "TEXT",
+      title: "title for attachment",
+      text: "text for this attachment",
+    }),
+  }
+)
+  .then((res) => res.json())
+  .then((labelData) => console.log(labelData))
+  .catch((err) => {
+    console.log(err);
+    console.log(err.response.data.msg);
+  });
+```
+
+Example response:
+
+```json
+{
+  "msg": "successfully created attachment"
+}
 ```
 
 </div>
