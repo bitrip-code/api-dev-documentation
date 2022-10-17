@@ -431,20 +431,34 @@ Example Response:
 Optional query parameters:
 
 - `lid` (optional) label ID.
+
   - Gets label by its ID; Used standalone. **_Doesn't work with other
     query params._** Returns single object.
+
 - `uid` (optional) user ID
+
   - Used to get labels by org member id.
+
 - `pid` (optional) project ID
+
   - Gets labels by their project ID.
+
 - `has_o` (optional) comma separated values
+
   - Get labels by the tags attached to them
+
 - `from` (optional) EPOCH timestamp
+
   - Defaults to all but can be used with type to narrow search.
+
 - `type` (optional) scan type (edited, viewed, scanned)
+
   - Narrows search to type of interaction.
+
 - `when` (optional) EPOCH timestamp.
+
   - Time stamp to limit search time
+
 - `to` (must be used with when) EPOCH timestamp
 
 While these query params are optional you must pass either a pid, uid,
@@ -552,16 +566,26 @@ Optional query parameters:
 
 - `pid` (optional) project ID; Used standalone. **_Doesn't work with other
   query params._** Returns single object.
+
   - Gets project by the projects ID.
+
 - `uid` (optional) user ID
+
   - Used to get a project created by org member id.
+
 - `has_o` (optional) comma separated values
+
   - Get projects by the tags attached to the labels inside them.
+
 - `from` (optional) EPOCH timestamp
+
   - Defaults to all but can be used with type to narrow search to all
     things after the epoch time stamp.
+
 - `to` (must be used with when) EPOCH timestamp
+
 - `type` (optional) scan type (edited, viewed, scanned)
+
   - Narrows search to type of interaction with the labels inside of the
     project.
 
@@ -632,18 +656,30 @@ Example Response:
 Optional query parameters:
 
 - `uid` (optional) user ID
+
   - Used to get logs by org member id.
+
 - `pid` (optional) get logs by project ID
+
   - Gets labels by the project ID.
+
 - `from` (optional) EPOCH timestamp
+
   - Defaults to all but can be used with type to narrow search to all
     things after the epoch time stamp.
+
 - `type` (optional) scan type (edited, viewed, scanned)
+
   - Narrows search to type of interaction with the label.
+
 - `lid` (optional) label ID
+
   - Gets label by its ID
+
 - `when` (optional) EPOCH timestamp.
+
   - Time stamp to limit search time
+
 - `to` (must be used with when) EPOCH timestamp
 
 If there are no query params sent, it will return all logs in the
