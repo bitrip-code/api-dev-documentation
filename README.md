@@ -129,14 +129,14 @@ Example Response:
 
 <div id="get_user">
 
-## `GET: /user`
+## `GET: /user/{userID}`
 
 Gets a user by their ID.
 
 Example Request:
 
 ```js
-const url = "https://api.bitrip.com/user?uid=dn82sDBSlbNj4hY9Hx0m490hIEl2";
+const url = "https://api.bitrip.com/user/dn82sDBSlbNj4hY9Hx0m490hIEl2";
 
 const options = {
   method: "GET",
