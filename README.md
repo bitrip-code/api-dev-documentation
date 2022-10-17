@@ -141,7 +141,7 @@ Example Response:
 
 ## `GET: /label/{labelID}`
 
-Get a single label using a label id after `/label/`
+Get a label by its ID.
 
 Example Request:
 
@@ -187,23 +187,27 @@ Example Response:
 
 ## `POST /label`
 
-Data must be sent as JSON body information.
+Create a new label. Data must be sent as JSON body information.
 
-- uid (required) User ID
+- `uid` (required) User ID
 
   - this will set the creator_ref for the label
+  - `String`
 
-- title (required)
+- `title` (required)
 
   - sets title for label
+  - `String`
 
-- pid (optional)
+- `pid` (optional)
 
   - creates label inside of project
+  - `String`
 
-- tags (optional)
+- `tags` (optional)
 
   - adds searchable keywords to label
+  - `Array`
 
 Example Request:
 
@@ -381,7 +385,7 @@ Example response:
 
 ## `DELETE: /label/{labelID}`
 
-Delete a single label using a label id after `/label/`.
+Delete a label by its ID.
 
 Example Request:
 
