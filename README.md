@@ -22,7 +22,7 @@ Routes:
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#post_label">`POST: /label`</a> - Accepts JSON uid, tags, name, and pid body data, returns `Map`
 - <a href="#post_label_attachment">`POST: /label/attachment/{labelId}`</a> - Accepts label id parameter and JSON title, text, type body data, returns `Map`
-- <a href="#put_label}">`PUT: /label/{labelId}`</a> - Accepts label id parameter and JSON tags, name, pid body data, returns `Map`
+- <a href="#put_label">`PUT: /label/{labelId}`</a> - Accepts label id parameter and JSON tags, name, pid body data, returns `Map`
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a> - Accepts label id parameter, returns `Map`
 - <a href="#get_labels">`GET: /labels`</a> - Accepts query string, returns `Array`
@@ -304,12 +304,17 @@ Edit labels by sending the updated value.
 Update label parameters by sending
 
 - `tags`
+
   - Pass items you want tags array to be set to.
   - `Array`
+
 - `name`
+
   - Pass the name you want the label to be updated to.
   - `String`
+
 - `pid`
+
   - Pass the project ID you want the label to be set or changed to.
   - `String`
 
