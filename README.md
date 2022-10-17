@@ -455,10 +455,6 @@ Optional query parameters:
 
   - Narrows search to type of interaction.
 
-- `when` (optional) EPOCH timestamp.
-
-  - Time stamp to limit search time
-
 - `to` (must be used with when) EPOCH timestamp
 
 While these query params are optional you must pass either a pid, uid,
@@ -675,10 +671,6 @@ Optional query parameters:
 - `lid` (optional) label ID
 
   - Gets label by its ID
-
-- `when` (optional) EPOCH timestamp.
-
-  - Time stamp to limit search time
 
 - `to` (must be used with when) EPOCH timestamp
 
