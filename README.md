@@ -36,14 +36,17 @@ Routes:
 
   - Successful requests will receive a status code 200 and JSON payload.
 
-- ! Error
+- ‼️ Error
+
   - Errors are handled with a status 500 code and a `msg` property with error details attached.
+
+<br>
 
 <div id="get_org">
 
 ## `GET: /org`
 
-Gets org info including member and admin ids for further querying.
+Gets organisation info.
 
 Example request:
 
@@ -187,12 +190,19 @@ Example Response:
 Data must be sent as JSON body information.
 
 - uid (required) User ID
+
   - this will set the creator_ref for the label
+
 - title (required)
+
   - sets title for label
+
 - pid (optional)
+
   - creates label inside of project
+
 - tags (optional)
+
   - adds searchable keywords to label
 
 Example Request:
@@ -234,13 +244,12 @@ Accepts:
   - options: TEXT
   - `String`
 
-- `title` (required)
+- `title`
 
   - title for attachment
   - `String`
 
 - `text` (required)
-
   - body text for text attachment
   - `String`
 
