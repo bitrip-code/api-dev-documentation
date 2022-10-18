@@ -39,7 +39,7 @@ Routes:
 
 - <a href="#put_label">`PUT: /label/{labelId}`</a>
 
-  - Accepts label id parameter and JSON tags, name, pid body data, returns `Map`
+  - Accepts label id parameter and JSON tags, name, uid, pid body data, returns `Map`
 
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a>
 
@@ -337,6 +337,12 @@ Example response:
 Edit labels by sending the updated value.
 
 Update label parameters by sending
+
+- `uid`
+
+  - Pass a users ID to transfer ownership.
+  - If the label is apart of a project, the user you are transferring ownership to will need to be apart of that project as well.
+  - `String`
 
 - `tags`
 
