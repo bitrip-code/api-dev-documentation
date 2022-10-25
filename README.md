@@ -61,6 +61,10 @@ Routes:
 
   - Accepts query string, returns `Array`
 
+- <a href="#post_project">`POST: /project` </a>
+
+  - Accepts JSON uid, members, and admins body data, returns `Map`
+
 - <a href="#get_logs">`GET: /logs`</a>
 
   - Accepts query string, returns `Array`
@@ -685,6 +689,67 @@ Example Response:
     },
     ...
 ]
+```
+
+</div>
+
+<br>
+
+<div id="post_project">
+
+## `POST /project`
+
+Accepts JSON body data
+
+- uid (required)
+
+  - user ID
+  - `String`
+
+- title (required)
+  - title for
+  - `String`
+
+admins (optional)
+
+- user ids to be assigned as admins
+- `Array`
+
+members (optional)
+
+- user ids to be assigned as admins
+- `Array`
+
+Example request:
+
+```js
+const url = "https://api.bitrip.com/project";
+
+const options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+  body: {
+    title: "title for project",
+    uid: "KFzra4FuAjbQCMawNQ0AlJoGmqv1", // this person will be assigned as the creator, admin and member.
+    admins: ["dn82sDBSlbNj4hY9Hx0m490hIEl2"], // will be assigned as an admin and member, has admin privileges.
+    members: ["zx90sDBSlbNj4hY9Hx0m490yuikj"], // assigned as member.
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+Example response:
+
+```js
+{
+    "pid": "9774761e-8e33-46dd-a76f-4be760535bb0"
+}
 ```
 
 </div>
