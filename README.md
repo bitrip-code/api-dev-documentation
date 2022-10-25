@@ -27,7 +27,7 @@ Routes:
 
 - <a href="#get_user_by_email">`GET: /user`</a>
 
-  - Accepts user id param, returns `Map`
+  - Accepts user id query string, returns `Map`
 
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a>
 
@@ -184,7 +184,7 @@ Example Response:
 
 Gets a user by their email.
 
-Accepts an email query parameter
+Accepts an email query string
 
 Example request:
 
