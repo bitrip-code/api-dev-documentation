@@ -25,6 +25,10 @@ Routes:
 
   - Accepts user id param, returns `Map`
 
+- <a href="#get_user_by_email">`GET: /user`</a>
+
+  - Accepts user id param, returns `Map`
+
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a>
 
   - Accepts label id parameter, returns `Map`
@@ -173,6 +177,50 @@ Example Response:
 ```
 
 </div>
+
+<br>
+
+## `GET /user`
+
+Gets a user by their email.
+
+Accepts an email query parameter
+
+Example request:
+
+```js
+const url =
+  "https://api.bitrip.com/user?email=thomas.smith.br.testing@gmail.com";
+
+const options = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+Example Response:
+
+```json
+{
+  "displayName": "Thomas - test",
+  "email": "thomas.smith.br.testing@gmail.com",
+  "uid": "dn82sDBSlbNj4hY9Hx0m490hIEl2",
+  "organisationId": "f11b4f25-4dbe-44a8-a723-bc612eeda4b9",
+  "projects": [
+    "b549ad06-eb5a-4fa6-88dc-4d80bbc2beae",
+    "480aea87-df2e-489d-9829-4daa35a13c02",
+    "aae48908-34fc-4d7b-80aa-8d7e4864325a",
+    "418b2ae1-a237-46f3-a6ac-4145e7f74aee"
+  ]
+}
+```
 
 <br>
 
