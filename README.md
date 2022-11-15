@@ -272,6 +272,32 @@ Example Response:
 }
 ```
 
+if there is location data froma scan it will be displayed:
+
+```js
+{
+    "tags": [
+        "DES-SA-626200",
+        "Task Not Started"
+    ],
+    "creator_ref": "/users/yEfXdnFr39OwRHeYrdU11aRzPZt1",
+    "projectID": null,
+    "id": "35c72ec7-71c0-4302-a323-9a411eeee610",
+    "modified": {
+        "_seconds": 1668478045,
+        "_nanoseconds": 679184000
+    },
+    "created": {
+        "_seconds": 1668462842,
+        "_nanoseconds": 200000000
+    },
+    "name": "UTHSC-MAYS-PHASE-3A-LIGHTING-CONTROL-DEVICES",
+    "location": "Charleston, SC",
+    "latitude": 30.8123753,
+    "longitude": -81.9576705
+}
+```
+
 </div>
 
 <div id="post_label">
