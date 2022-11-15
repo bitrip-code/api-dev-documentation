@@ -69,6 +69,10 @@ Routes:
 
   - Accepts JSON uid, members, and admins body data, returns `Map`
 
+- <a href="#delete_project">`DELETE: /project/{projectId}` </a>
+
+  - Accepts project id parameter, returns success message
+
 - <a href="#get_logs">`GET: /logs`</a>
 
   - Accepts query string, returns `Array`
@@ -803,6 +807,38 @@ Example response:
 </div>
 
 <br>
+
+<div id="delete_project">
+
+## `DELETE: /project{projectId}`
+
+Example request:
+
+```js
+const url = "https://api.bitrip.com/project/239847239487-notreal-34903939";
+
+const options = {
+  method: "DELETE",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+Example response:
+
+```js
+{
+  msg: "Project deleted.";
+}
+```
+
+</div>
 
 <div id="get_logs">
 
