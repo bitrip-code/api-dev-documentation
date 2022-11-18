@@ -720,21 +720,21 @@ Example requests:
 
 - Get all projects in organization
 
-`https://api.bitrip.com/project`
+`https://api.bitrip.com/projects`
 
 - Get all projects whose labels have been interacted with since Wednesday,
   October 5, 2022 12:19:32 AM
 
-`https://api.bitrip.com/project?from=1664929172`
+`https://api.bitrip.com/projects?from=1664929172`
 
 - Get all projects that have a label in them with the urgent or done tag
 
-`https://api.bitrip.com/project?from=1664929172&has_o=urgent,done`
+`https://api.bitrip.com/projects?from=1664929172&has_o=urgent,done`
 
 - Get all projects that have labels that have been scanned since October
   5, 2022 12:19:32 AM and has urgent or done tags in them.
 
-`https://api.bitrip.com/project?from=1664929172&type=scanned&has_o=urgent,done`
+`https://api.bitrip.com/projects?from=1664929172&type=scanned&has_o=urgent,done`
 
 Example Response:
 
