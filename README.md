@@ -41,6 +41,10 @@ Routes:
 
   - Accepts label id parameter and JSON title, text, type body data, returns `Map`
 
+- <a href="#put_label_attachment">`PUT: /label/attachment/{labelId}`</a>
+
+  - Accepts `labelId` as parameter and an array of `attachments` sent through the request body body.
+
 - <a href="#put_label">`PUT: /label/{labelId}`</a>
 
   - Accepts label id parameter and JSON tags, name, uid, pid body data, returns `Map`
@@ -410,6 +414,68 @@ Example response:
 
 </div>
 
+<br>
+
+<div id="post_label_attachment">
+
+## `POST: /label/attachment/{labelID}`
+
+Accepts:
+
+- `type` (required)
+
+  - options: TEXT
+  - `String`
+
+- `title`
+
+  - title for attachment
+  - `String`
+
+- `text` (required)
+  - body text for text attachment
+  - `String`
+
+Example request:
+
+```js
+fetch(
+  "https://api.bitrip.com/label/attachment/41e92e47-133d-4b6a-89d7-a38404ec6024",
+  {
+    method: "PUT",
+    headers: {
+      "x-api-key": "your api key here",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([
+      {
+        id: attachmentId,
+        text: "updated text",
+        title: "updated title",
+      },
+      {
+        id: attachmentId2,
+        text: "updated text 2",
+      },
+    ]),
+  }
+)
+  .then((res) => res.json())
+  .then((response) => console.log(response))
+  .catch((err) => {
+    console.log(err.response.data.msg);
+  });
+```
+
+Example response:
+
+```json
+{
+  "msg": "Attachments updated"
+}
+```
+
+</div>
 <br>
 
 <div id="put_label">
