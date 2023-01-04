@@ -422,23 +422,9 @@ Example response:
 
 <div id="put_label_attachment">
 
-## `POST: /label/attachment/{labelID}`
+## `PUT: /label/attachment/{labelID}`
 
-Accepts:
-
-- `type` (required)
-
-  - options: TEXT
-  - `String`
-
-- `title`
-
-  - title for attachment
-  - `String`
-
-- `text` (required)
-  - body text for text attachment
-  - `String`
+Edit one or multiple label attachments.
 
 Example request:
 
@@ -483,25 +469,11 @@ Example response:
 
 <br>
 
-<div id="put_label_attachment">
+<div id="delete_label_attachment">
 
-## `POST: /label/attachment/{labelID}`
+## `DELETE: /label/attachment/{labelID}`
 
-Accepts:
-
-- `type` (required)
-
-  - options: TEXT
-  - `String`
-
-- `title`
-
-  - title for attachment
-  - `String`
-
-- `text` (required)
-  - body text for text attachment
-  - `String`
+Delete one or more label attachments.
 
 Example request:
 
