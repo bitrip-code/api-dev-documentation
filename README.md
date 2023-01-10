@@ -457,6 +457,36 @@ fetch(
   });
 ```
 
+Example 2:
+
+```js
+const url =
+  "https://api.bitrip.com/label/attachment/CFB34486-9335-473A-A986-AB4314D69830";
+
+const requestData = {
+  attachments: [
+    {
+      id: "28e29106-d924-4d64-b422-0a5c8523ccc3",
+      title: "New Name",
+      text: "body text for attachment",
+    },
+  ],
+};
+
+const options = {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "your api key here",
+  },
+  body: JSON.stringify(requestData),
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
 Example response:
 
 ```json
