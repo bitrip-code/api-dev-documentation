@@ -1,10 +1,11 @@
-# Routes
+## Routes
 
-BaseRoute: `https://api.bitrip.com`
+- Base URL: https://api.bitrip.com
 
-Security:
+## Security
 
-Must pass api key in headers behind `x-api-key`
+- To access the API, you must include an API key in the headers of your request, behind x-api-key.
+- Here's an example of how to include the API key in the headers using JavaScript:
 
 Example:
 
@@ -23,77 +24,91 @@ Routes:
 
 - <a href="#get_user">`GET: /user/{userId}`</a>
 
-  - Accepts user id param, returns `Map`
+  - Accepts user id param
+  - returns `Map`
 
 - <a href="#get_user_by_email">`GET: /user`</a>
 
-  - Accepts user id query string, returns `Map`
+  - Accepts user id query string
+  - returns `Map`
 
 - <a href="#get_label_by_id">`GET: /label/{labelId}`</a>
 
-  - Accepts label id parameter, returns `Map`
+  - Accepts label id parameter
+  - returns `Map`
 
 - <a href="#post_label">`POST: /label`</a>
 
-  - Accepts JSON uid, tags, name, and pid body data, returns `Map`
+  - Accepts JSON uid, tags, name, and pid body data
+  - returns `Map`
 
 - <a href="#post_label_attachment">`POST: /label/attachment/{labelId}`</a>
 
-  - Accepts label id parameter and JSON title, text, type body data, returns `Map`
+  - Accepts label id parameter and JSON title, text, type body data
+  - returns `Map`
 
 - <a href="#put_label_attachment">`PUT: /label/attachment/{labelId}`</a>
 
-  - Accepts `labelId` as parameter and an array of `attachments` sent through the request body body.
+  - Accepts labelId as a parameter and an array of attachments sent in the request body.
 
 - <a href="#delete_label_attachment">`DELETE: /label/attachment/{labelId}`</a>
 
-  - Accepts `labelId` as parameter and an array of attachment ids sent through the request body body.
+  - Accepts labelId as a parameter and an array of attachments sent in the request body.
 
 - <a href="#put_label">`PUT: /label/{labelId}`</a>
 
-  - Accepts label id parameter and JSON tags, name, uid, pid body data, returns `Map`
+  - Accepts the following as parameters in the request body: label id, JSON tags, name, uid, pid.
+  - returns `Map`
 
 - <a href="#delete_label">`DELETE: /label/{labelId}`</a>
 
-  - Accepts label id parameter, returns `Map`
+  - Accepts label id URL parameter.
+  - returns `Map`
 
 - <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a>
 
-  - Accepts label id parameter, returns `Map`
+  - Accepts label id parameter
+  - returns `Map`
 
 - <a href="#get_labels">`GET: /labels`</a>
 
-  - Accepts query string, returns `Array`
+  - Accepts query string
+  - returns `Array`
 
 - <a href="#get_project_by_id">`GET: /project/{projectId}`</a>
 
-  - Accepts project id parameter, returns `Map`
+  - Accepts project id parameter
+  - returns `Map`
 
 - <a href="#get_projects">`GET: /projects` </a>
 
-  - Accepts query string, returns `Array`
+  - Accepts query string
+  - returns `Array`
 
 - <a href="#post_project">`POST: /project` </a>
 
-  - Accepts JSON uid, members, and admins body data, returns `Map`
+  - Accepts JSON uid, members, and admins body data
+  - returns `Map`
 
 - <a href="#delete_project">`DELETE: /project/{projectId}` </a>
 
-  - Accepts project id parameter, returns success message
+  - Accepts project id as a URL parameter
+  - returns success message
 
 - <a href="#get_logs">`GET: /logs`</a>
 
-  - Accepts query string, returns `Array`
+  - Accepts a query string as a parameter
+  - returns `Array`
 
 <br>
 
 - Success
 
-  - Successful requests will receive a status code 200 and JSON payload.
+  - If the request is successful, the server will respond with a HTTP status code of 200 and a JSON payload in the response body.
 
 - ‼️ Error
 
-  - Errors are handled with a status 500 code and a `msg` property with error details attached.
+  - In case of an error, the server will return a HTTP status code of 500 and an error message in the response body's msg property, containing details about the error.
 
 <br>
 
@@ -101,9 +116,9 @@ Routes:
 
 ## `GET: /org`
 
-Gets organisation info.
+- Gets organisation info.
 
-Example request:
+### Example request:
 
 ```js
 const url = "https://api.bitrip.com/org";
@@ -121,7 +136,7 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-Example Response:
+### Example Response:
 
 ```json
 {
@@ -143,6 +158,10 @@ Example Response:
 }
 ```
 
+- A successful request will return a JSON payload with information about the organization.
+
+Note: User IDs are provided as an example in the response. Actual user IDs will be unique strings.
+
 </div>
 
 <br>
@@ -151,9 +170,11 @@ Example Response:
 
 ## `GET: /user/{userID}`
 
-Gets a user by their ID.
+- This API endpoint retrieves a user based on their unique ID.
 
-Example Request:
+### Example Request:
+
+- Here's an example request you can use to retrieve a user:
 
 ```js
 const url = "https://api.bitrip.com/user/dn82sDBSlbNj4hY9Hx0m490hIEl2";
@@ -171,7 +192,9 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-Example Response:
+### Example Response
+
+- The response to the request will contain details about the user, such as their display name, email, unique ID, and organization ID. It will also include an array of project IDs associated with the user.
 
 ```json
 {
