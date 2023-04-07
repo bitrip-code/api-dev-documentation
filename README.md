@@ -217,11 +217,9 @@ fetch(url, options)
 
 ## `GET /user`
 
-Gets a user by their email.
+- This endpoint retrieves a user by their email address. It accepts an email query string as a parameter.
 
-Accepts an email query string
-
-Example request:
+### Example Request
 
 ```js
 const url =
@@ -240,7 +238,7 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-Example Response:
+### Example Response
 
 ```json
 {
@@ -263,9 +261,9 @@ Example Response:
 
 ## `GET: /label/{labelID}`
 
-Get a label by its ID.
+- Get a label by its ID.
 
-Example Request:
+### Example Request:
 
 ```js
 const url = "https://api.bitrip.com/label/57f1896e-e0f0-458a-bbc2-218d7a557393";
@@ -283,7 +281,7 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-Example Response:
+### Example Response
 
 ```json
 {
@@ -303,7 +301,7 @@ Example Response:
 }
 ```
 
-if there is location data froma scan it will be displayed:
+- If there is location data from a scan it will be displayed:
 
 ```js
 {
@@ -335,7 +333,7 @@ if there is location data froma scan it will be displayed:
 
 ## `POST /label`
 
-Create a new label. Data must be sent as JSON body information.
+Creates a new label. Data must be sent as JSON body information.
 
 - `uid` (required) User ID
 
@@ -357,7 +355,7 @@ Create a new label. Data must be sent as JSON body information.
   - adds searchable keywords to label
   - `Array`
 
-Example Request:
+### Example Request
 
 ```js
 fetch("https://api.bitrip.com/label", {
@@ -389,23 +387,23 @@ fetch("https://api.bitrip.com/label", {
 
 ## `POST: /label/attachment/{labelID}`
 
-Accepts:
+- This endpoint accepts the following parameters:
 
-- `type` (required)
+- type (required): Specifies the type of attachment being uploaded. This parameter is mandatory.
 
-  - options: TEXT
-  - `String`
+  - Accepted options: TEXT
+  - Data type: String
 
-- `title`
+- `title`: Specifies the title of the attachment being uploaded. This parameter is optional.
 
-  - title for attachment
-  - `String`
+  - Description: A title to give the attachment.
+  - Data type: String
 
-- `text` (required)
-  - body text for text attachment
-  - `String`
+- `text` (required): Specifies the body text of the attachment. This parameter is mandatory if `type` is set to `TEXT`.
+  - Description: The body text of the attachment.
+  - Data type: `String`
 
-Example request:
+### Example Request
 
 ```js
 fetch(
@@ -431,7 +429,7 @@ fetch(
   });
 ```
 
-Example response:
+### Example Response
 
 ```json
 {
@@ -447,9 +445,9 @@ Example response:
 
 ## `PUT: /label/attachment/{labelID}`
 
-Edit one or multiple label attachments.
+- This endpoint allows you to edit one or multiple label attachments.
 
-Example request:
+### Example Request
 
 ```js
 fetch(
@@ -480,7 +478,7 @@ fetch(
   });
 ```
 
-Example 2:
+### Example 2:
 
 ```js
 const url =
@@ -510,13 +508,21 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-Example response:
+### Example Response
 
 ```json
 {
   "msg": "Attachments updated"
 }
 ```
+
+This documentation provides an example request to update label attachments using the PUT method. The first example uses the fetch function and the second example uses fetch with separate url, requestData, and options objects.
+
+In the example requests, the Content-Type header is set to application/json and the x-api-key header is set to a placeholder string.
+
+In the request body, an array of objects is passed. Each object represents an attachment to be updated, and must include an id parameter to identify the attachment. The text and title parameters are optional and can be used to update the corresponding fields.
+
+The response object contains a msg property indicating the status of the update operation.
 
 </div>
 
@@ -526,9 +532,9 @@ Example response:
 
 ## `DELETE: /label/attachment/{labelID}`
 
-Delete one or more label attachments.
+- Delete one or more label attachments.
 
-Example request:
+### Example Request:
 
 ```js
 fetch(
@@ -549,7 +555,7 @@ fetch(
   });
 ```
 
-Example response:
+### Example Response:
 
 ```json
 {
@@ -565,34 +571,15 @@ Example response:
 
 ## `PUT: /label/{labelID}`
 
-Edit labels by sending the updated value.
-
-Update label parameters by sending
-
-- `uid`
-
-  - Pass a users ID to transfer ownership.
-  - If the label is apart of a project, the user you are transferring ownership to will need to be apart of that project as well.
-  - `String`
-
-- `tags`
-
-  - Pass items you want tags array to be set to.
-  - `Array`
-
-- `name`
-
-  - Pass the name you want the label to be updated to.
-  - `String`
-
-- `pid`
-
-  - Pass the project ID you want the label to be set or changed to.
-  - `String`
+- This endpoint allows editing of labels by sending the updated value. You can update the following label parameters:
+  - uid: Pass a user ID to transfer ownership. If the label is part of a project, the user you are transferring ownership to must also be a part of that project. Data Type: String.
+  - tags: Pass items you want the tags array to be set to. Data Type: Array.
+  - name: Pass the name you want the label to be updated to. Data Type: String.
+  - pid: Pass the project ID you want the label to be set or changed to. Data Type: String.
 
 Example request:
 
-- updates label name, tags
+- This request updates the label name and tags
 
 ```js
 fetch("https://api.bitrip.com/label", {
@@ -635,7 +622,7 @@ fetch("https://api.bitrip.com/label/41e92e47-133d-4b6a-89d7-a38404ec6024", {
   });
 ```
 
-Example response:
+### Example Response
 
 ```json
 {
