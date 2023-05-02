@@ -670,7 +670,7 @@ Example Response:
 
 ## `DELETE: /label/from_project/{labelID}`
 
-Removes label from project.
+- Removes a label from a project, without deleting the label itself.
 
 Example Request:
 
@@ -692,7 +692,7 @@ Example Response:
 
 ## `GET: /labels`
 
-Optional query parameters:
+- This endpoint retrieves labels based on various optional query parameters. The available parameters are:
 
 - `lid` (optional) label ID.
 
