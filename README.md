@@ -1,11 +1,11 @@
 ## Routes
 
-- Base URL: https://api.bitrip.com
+- The base URL for accessing the API is `https://api.bitrip.com`
 
 ## Security
 
-- To access the API, you must include an API key in the headers of your request, behind x-api-key.
-- Here's an example of how to include the API key in the headers using JavaScript:
+- In order to access the API, you must include an API key in the headers of your request using the `x-api-key` field.
+- Here is an example of how to include the API key in the headers using JavaScript:
 
 Example:
 
@@ -16,107 +16,99 @@ Example:
 }
 ```
 
-Routes:
+<br/>
 
-- <a href="#get_org">`GET: /org`</a>
+## Endpoints:
 
-  - returns `Map`
+<a href="#org_get">Get: /org</a>
 
-- <a href="#get_user">`GET: /user/{userId}`</a>
+- returns `Map`
 
-  - Accepts user id param
-  - returns `Map`
+<a href="#user_get_param">GET: /user/{userId}</a>
 
-- <a href="#get_user_by_email">`GET: /user`</a>
+- Accepts user id param
+- returns `Map`
 
-  - Accepts user id query string
-  - returns `Map`
+<a href="#user_get_query">GET: /user?email="example@gmail.com"</a>
 
-- <a href="#get_label_by_id">`GET: /label/{labelId}`</a>
+- Accepts user email query string
+- returns `Map`
 
-  - Accepts label id parameter
-  - returns `Map`
+<a href="#label_get_param">GET: /label/{labelId}</a>
 
-- <a href="#post_label">`POST: /label`</a>
+- Accepts label id parameter
+- returns `Map`
 
-  - Accepts JSON uid, tags, name, and pid body data
-  - returns `Map`
+<a href="#label_post">POST: /label</a>
 
-- <a href="#post_label_attachment">`POST: /label/attachment/{labelId}`</a>
+- Accepts JSON uid, tags, name, and pid body data
+- returns `Map`
 
-  - Accepts label id parameter and JSON title, text, type body data
-  - returns `Map`
+<a href="#label/attachment_post">POST: /label/attachment/{labelId}</a>
 
-- <a href="#put_label_attachment">`PUT: /label/attachment/{labelId}`</a>
+- Accepts label id parameter and JSON title, text, type body data
+- returns `Map`
 
-  - Accepts labelId as a parameter and an array of attachments sent in the request body.
+<a href="#label/attachment_put">PUT: /label/attachment/{labelId}</a>
 
-- <a href="#delete_label_attachment">`DELETE: /label/attachment/{labelId}`</a>
+- Accepts labelId as a parameter and an array of attachments sent in the request body.
 
-  - Accepts labelId as a parameter and an array of attachments sent in the request body.
+<a href="#label/attachment_delete">DELETE: /label/attachment/{labelId}</a>
 
-- <a href="#put_label">`PUT: /label/{labelId}`</a>
+- Accepts labelId as a parameter and an array of attachments sent in the request body.
 
-  - Accepts the following as parameters in the request body: label id, JSON tags, name, uid, pid.
-  - returns `Map`
+<a href="#label_put">PUT: /label/{labelId}</a>
 
-- <a href="#delete_label">`DELETE: /label/{labelId}`</a>
+- Accepts the following as parameters in the request body: label id, JSON tags, name, uid, pid.
+- returns `Map`
 
-  - Accepts label id URL parameter.
-  - returns `Map`
+<a href="#label_delete">DELETE: /label/{labelId}</a>
 
-- <a href="#delete_label_project">`DELETE: /label/from_project/{labelId}`</a>
+- Accepts label id URL parameter.
+- returns `Map`
 
-  - Accepts label id parameter
-  - returns `Map`
+<a href="#label/from_project_delete">DELETE: /label/from_project/{labelId}</a>
 
-- <a href="#get_labels">`GET: /labels`</a>
+- Accepts label id parameter
+- returns `Map`
 
-  - Accepts query string
-  - returns `Array`
+<a href="#labels_get">GET: /labels</a>
 
-- <a href="#get_project_by_id">`GET: /project/{projectId}`</a>
+- Accepts project id parameter
+- returns `Map`
 
-  - Accepts project id parameter
-  - returns `Map`
+<a href="#projects_get">GET: /projects</a>
 
-- <a href="#get_projects">`GET: /projects` </a>
+- Accepts JSON uid, members, and admins body data
+- returns `Map`
 
-  - Accepts query string
-  - returns `Array`
+<a href="#project_delete">DELETE: /project/{projectId}</a>
 
-- <a href="#post_project">`POST: /project` </a>
+- Accepts project id as a URL parameter
+- returns success message
 
-  - Accepts JSON uid, members, and admins body data
-  - returns `Map`
+<a href="#logs_get">GET: /logs</a>
 
-- <a href="#delete_project">`DELETE: /project/{projectId}` </a>
-
-  - Accepts project id as a URL parameter
-  - returns success message
-
-- <a href="#get_logs">`GET: /logs`</a>
-
-  - Accepts a query string as a parameter
-  - returns `Array`
+- Accepts a query string as a parameter
+- returns `Array`
 
 <br>
 
-- Success
+Success
 
-  - If the request is successful, the server will respond with a HTTP status code of 200 and a JSON payload in the response body.
+- If the request is successful, the server will respond with a HTTP status code of 200 and a JSON payload in the response body.
 
-- ‼️ Error
+‼️ Error
 
-  - In case of an error, the server will return a HTTP status code of 500 and an error message in the response body's msg property, containing details about the error.
+- In case of an error, the server will return a HTTP status code of 500 and an error message in the response body's msg property, containing details about the error.
 
 <br>
 
-<div id="get_org">
+<div id="org_get">
 
 ## `GET: /org`
 
-- Gets organisation info.
+- The /org endpoint retrieves information about a Bitrip organization using a GET request.
 
 ### Example request:
 
@@ -136,12 +128,15 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
+To successfully call this endpoint, send a GET request to the /org endpoint with the Content-Type header set to application/json. The x-api-key header is required and should be replaced with your API key.
+<br />
+
 ### Example Response:
 
 ```json
 {
   "admins": [
-    "KFzra4FuAjbQCMawNQ0AlJoGmqv1", //user IDS
+    "KFzra4FuAjbQCMawNQ0AlJoGmqv1", // admin user IDS
     "dn82sDBSlbNj4hY9Hx0m490hIEl2"
   ],
   "subscribers": [],
@@ -158,23 +153,31 @@ fetch(url, options)
 }
 ```
 
-- A successful request will return a JSON payload with information about the organization.
+If the request is successful, the API will return a JSON response with the requested organization's information. The response contains the following properties:
 
-Note: User IDs are provided as an example in the response. Actual user IDs will be unique strings.
+- `admins`: An array of user IDs that represent the administrators of the organization.
+- `subscribers`: An array of user IDs that represent the subscribers of the organization.
+- `members`: An array of user IDs that represent the members of the organization.
+- `invitedAdmins`: An array of user IDs that represent the invited administrators of the organization.
+- `created`: An object that contains the creation date and time of the organization in seconds and nanoseconds format.
+- `name`: The name of the organization.
+- `id`: A unique identifier that represents the organization.
+- `creatorId`: The ID of the user who created the organization.
+- `invitedMembers`: An array of user IDs that represent the invited members of the organization.
+
+Please note that the user IDs included in the response are only provided as examples, and the actual user IDs will be unique strings.
 
 </div>
 
 <br>
 
-<div id="get_user">
+<div id="user_get_param">
 
 ## `GET: /user/{userID}`
 
-- This API endpoint retrieves a user based on their unique ID.
+- Get a user by user iD.
 
 ### Example Request:
-
-- Here's an example request you can use to retrieve a user:
 
 ```js
 const url = "https://api.bitrip.com/user/dn82sDBSlbNj4hY9Hx0m490hIEl2";
@@ -194,8 +197,6 @@ fetch(url, options)
 
 ### Example Response
 
-- The response to the request will contain details about the user, such as their display name, email, unique ID, and organization ID. It will also include an array of project IDs associated with the user.
-
 ```json
 {
   "displayName": "Thomas - test",
@@ -211,13 +212,26 @@ fetch(url, options)
 }
 ```
 
-</div>
+<br/>
 
+If the request is successful, the API will return a JSON response with the requested user's information. The response contains the following properties:
+
+- `displayName`: The user's display name.
+- `email`: The user's email address.
+- `uid`: The user ID, which is a unique identifier for the user.
+- `organisationId`: The unique identifier of the organization that the user is associated with.
+- `projects`: An array of project IDs that represent the projects the user has access to.
+
+Please note that the project IDs included in the response are only provided as examples, and the actual project IDs will be unique strings.
+
+</div>
 <br>
 
-## `GET /user`
+<div id="user_get_query">
 
-- This endpoint retrieves a user by their email address. It accepts an email query string as a parameter.
+## `GET /user?email=example@gmail.com`
+
+- Get a user by their email.
 
 ### Example Request
 
@@ -255,9 +269,20 @@ fetch(url, options)
 }
 ```
 
-<br>
+If the request is successful, the API will return a JSON response with the requested user's information. The response contains the following properties:
 
-<div id="get_label_by_id">
+- `displayName`: The user's display name.
+- `email`: The user's email address.
+- `uid`: The user ID, which is a unique identifier for the user.
+- `organisationId`: The unique identifier of the organization that the user is associated with.
+- `projects`: An array of project IDs that represent the projects that the user has access to.
+
+Please note that the project IDs included in the response are only provided as examples, and the actual project IDs will be unique strings.
+
+</div>
+
+<div id="label_get_param">
+<br>
 
 ## `GET: /label/{labelID}`
 
@@ -281,7 +306,7 @@ fetch(url, options)
   .then((data) => console.log(data));
 ```
 
-### Example Response
+### Example Response:
 
 ```json
 {
@@ -327,9 +352,25 @@ fetch(url, options)
 }
 ```
 
-</div>
+If the request is successful, the API will return a JSON response with the requested label's information. The response contains the following properties:
 
-<div id="post_label">
+- `tags`: An array of tags associated with the label.
+- `creator_ref`: A reference to the user who created the label.
+- `projectID`: The ID of the project that the label belongs to.
+- `id`: A unique identifier for the label.
+- `modified`: An object that contains the last modified date and time of the label in seconds and nanoseconds format.
+- `created`: An object that contains the creation date and time of the label in seconds and nanoseconds format.
+- `name`: The name of the label.
+- `location`: The location data associated with a scan, if applicable.
+- `latitude`: The latitude of the scan location, if applicable.
+- `longitude`: The longitude of the scan location, if applicable.
+
+Please note that the tag values, user reference, and location data included in the response are only provided as examples, and the actual values will be unique strings or coordinates.
+
+</div>
+<br/>
+
+<div id="label_post">
 
 ## `POST /label`
 
@@ -337,22 +378,21 @@ Creates a new label. Data must be sent as JSON body information.
 
 - `uid` (required) User ID
 
-  - this will set the creator_ref for the label
+  - This will set the creator_ref for the label.
   - `String`
 
 - `title` (required)
 
-  - sets title for label
+  - Sets title for label.
   - `String`
 
 - `pid` (optional)
 
-  - creates label inside of project
+  - Creates label inside of project.
   - `String`
 
 - `tags` (optional)
-
-  - adds searchable keywords to label
+  - Adds searchable keywords to label.
   - `Array`
 
 ### Example Request
@@ -379,17 +419,32 @@ fetch("https://api.bitrip.com/label", {
   });
 ```
 
+## Example Response:
+
+If the request is successful, the API will return a JSON response with the requested label's information. The response contains the following properties:
+
+- `tags`: An array of tags associated with the label.
+- `creator_ref`: A reference to the user who created the label.
+- `projectID`: The ID of the project that the label belongs to.
+- `id`: A unique identifier for the label.
+- `modified`: An object that contains the last modified date and time of the label in seconds and nanoseconds format.
+- `created`: An object that contains the creation date and time of the label in seconds and nanoseconds format.
+- `name`: The name of the label.
+- `location`: The location data associated with a scan, if applicable.
+- `latitude`: The latitude of the scan location, if applicable.
+- `longitude`: The longitude of the scan location, if applicable.
+
 </div>
 
 <br>
 
-<div id="post_label_attachment">
+<div id="label/attachment_post">
 
 ## `POST: /label/attachment/{labelID}`
 
 - This endpoint accepts the following parameters:
 
-- type (required): Specifies the type of attachment being uploaded. This parameter is mandatory.
+- `type` (required): Specifies the type of attachment being uploaded. This parameter is mandatory.
 
   - Accepted options: TEXT
   - Data type: String
@@ -433,7 +488,7 @@ fetch(
 
 ```json
 {
-  "msg": "successfully created attachment"
+  "attachmentId": "id of newly created attachment"
 }
 ```
 
@@ -441,11 +496,28 @@ fetch(
 
 <br>
 
-<div id="put_label_attachment">
+<div id="label/attachment_put">
 
 ## `PUT: /label/attachment/{labelID}`
 
-- This endpoint allows you to edit one or multiple label attachments.
+Updates one or more attachments for a label.
+
+The endpoint accepts the following parameters:
+
+- `labelID` (required): The ID of the label to update.
+  - Data type: String
+
+The following parameters must be passed in the request body:
+
+- `attachments` (required): An array of attachments to update.
+  - Data type: Array
+  - Each attachment should have the following properties:
+    - `id` (required): The ID of the attachment to update.
+      - Data type: String
+    - `text` (optional): The updated text for the attachment.
+      - Data type: String
+    - `title` (optional): The updated title for the attachment.
+      - Data type: String
 
 ### Example Request
 
@@ -516,23 +588,23 @@ fetch(url, options)
 }
 ```
 
-This documentation provides an example request to update label attachments using the PUT method. The first example uses the fetch function and the second example uses fetch with separate url, requestData, and options objects.
-
-In the example requests, the Content-Type header is set to application/json and the x-api-key header is set to a placeholder string.
-
-In the request body, an array of objects is passed. Each object represents an attachment to be updated, and must include an id parameter to identify the attachment. The text and title parameters are optional and can be used to update the corresponding fields.
-
-The response object contains a msg property indicating the status of the update operation.
-
 </div>
 
 <br>
 
-<div id="delete_label_attachment">
+<div id="label/attachment_delete">
 
 ## `DELETE: /label/attachment/{labelID}`
 
-- Delete one or more label attachments.
+Deletes one or more attachments associated with a label. The endpoint accepts the following parameters:
+
+- `labelID` (required): The ID of the label from which to delete the attachment(s).
+  - Data type: String
+
+The following parameter must be passed in the request body:
+
+- `attachments` (required): An array of attachment IDs to be deleted.
+  - Data type: Array of Strings
 
 ### Example Request:
 
@@ -567,15 +639,20 @@ fetch(
 
 <br>
 
-<div id="put_label">
+<div id="label_put">
 
 ## `PUT: /label/{labelID}`
 
 - This endpoint allows editing of labels by sending the updated value. You can update the following label parameters:
-  - uid: Pass a user ID to transfer ownership. If the label is part of a project, the user you are transferring ownership to must also be a part of that project. Data Type: String.
-  - tags: Pass items you want the tags array to be set to. Data Type: Array.
-  - name: Pass the name you want the label to be updated to. Data Type: String.
-  - pid: Pass the project ID you want the label to be set or changed to. Data Type: String.
+
+  - uid: Pass a user ID to transfer ownership. If the label is part of a project, the user you are transferring ownership to must also be a part of that project.
+    - Data Type: String.
+  - tags: Pass items you want the tags array to be set to.
+    - Data Type: Array.
+  - name: Pass the name you want the label to be updated to.
+    - Data Type: String.
+  - pid: Pass the project ID you want the label to be set or changed to.
+    - Data Type: String.
 
 Example request:
 
@@ -645,13 +722,28 @@ fetch("https://api.bitrip.com/label/41e92e47-133d-4b6a-89d7-a38404ec6024", {
 
 <br>
 
-<div id="delete_label">
+<div id="label_delete">
 
 ## `DELETE: /label/{labelID}`
 
 Delete a label by its ID.
 
 Example Request:
+
+```js
+fetch("https://api.bitrip.com/label/946b825f-af94-49c1-8c33-409ef44c758b", {
+  method: "GET",
+  headers: {
+    "x-api-key": "your api key here",
+    "Content-Type": "application/json",
+  },
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((err) => {
+    console.error(err);
+  });
+```
 
 `https://api.bitrip.com/label/946b825f-af94-49c1-8c33-409ef44c758b`
 
@@ -666,7 +758,7 @@ Example Response:
 </div>
 <br>
 
-<div id="delete_label_project">
+<div id="label/from_project_delete">
 
 ## `DELETE: /label/from_project/{labelID}`
 
@@ -674,7 +766,23 @@ Example Response:
 
 Example Request:
 
-`https://api.bitrip.com/label/from_project/946b825f-af94-49c1-8c33-409ef44c758b`
+```js
+fetch(
+  "https://api.bitrip.com/label/from_project/946b825f-af94-49c1-8c33-409ef44c758b",
+  {
+    method: "GET",
+    headers: {
+      "x-api-key": "your api key here",
+      "Content-Type": "application/json",
+    },
+  }
+)
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => {
+    console.log(err.response.data.msg);
+  });
+```
 
 Example Response:
 
@@ -688,7 +796,7 @@ Example Response:
 
 <br>
 
-<div id="get_labels">
+<div id="labels_get">
 
 ## `GET: /labels`
 
@@ -770,7 +878,7 @@ Example response:
 
 <br>
 
-<div id="get_project_by_id">
+<div id="projects_get">
 
 ## `GET: /project/{projectID}`
 
@@ -1002,7 +1110,7 @@ Example response:
 
 </div>
 
-<div id="get_logs">
+<div id="logs_get">
 
 ## `GET: /logs`
 
