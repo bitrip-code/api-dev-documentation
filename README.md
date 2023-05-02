@@ -20,7 +20,7 @@ Example:
 
 ## Endpoints:
 
-<a href="#org_get">Get: /org</a>
+<a href="#org_get">GET: /org</a>
 
 - returns `Map`
 
@@ -79,7 +79,12 @@ Example:
 
 <a href="#projects_get">GET: /projects</a>
 
-- Accepts JSON uid, members, and admins body data
+- Accepts query params
+- returns `Map`
+
+<a href="#project_get">GET: /project/{projectId}</a>
+
+- Accepts project ID as param
 - returns `Map`
 
 <a href="#project_delete">DELETE: /project/{projectId}</a>
@@ -878,7 +883,7 @@ Example response:
 
 <br>
 
-<div id="projects_get">
+<div id="project_get">
 
 ## `GET: /project/{projectID}`
 
@@ -926,7 +931,7 @@ Example Response:
 
 <br>
 
-<div id="get_projects">
+<div id="projects_get">
 
 ## `GET: /projects`
 
